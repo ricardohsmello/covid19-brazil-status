@@ -1,4 +1,4 @@
-# covid19_brazil_status
+# Covid-19 Brazil Status
 
 Check the numbers and status of the Covid-19 in brazil
 
