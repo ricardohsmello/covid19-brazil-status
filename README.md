@@ -2,4 +2,5 @@
 
 Check the numbers and status of the Covid-19 in brazil
 
-![App](https://i.imgur.com/zOtpF7d.png)
+<img width="350" alt="" src="https://i.imgur.com/IMzsWtd.png">
+
