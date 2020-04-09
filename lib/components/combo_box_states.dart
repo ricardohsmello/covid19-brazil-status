@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ComboBoxStates extends StatefulWidget {
+  List<String> buildItems;
+  String dropdownValue;
+  Function onChangeValue;
+
+  ComboBoxStates({this.buildItems, this.dropdownValue, this.onChangeValue});
+
   @override
-  _ComboBoxStatesState createState() => _ComboBoxStatesState();
+  _ComboBoxStatesState createState() => _ComboBoxStatesState(buildItems, dropdownValue, onChangeValue);
 }
 
 class _ComboBoxStatesState extends State<ComboBoxStates> {
-  String dropdownValue = 'Escolha o estado:';
+  List<String> buildItems;
+  String dropdownValue;
+  Function onChangeValue;
+
+  _ComboBoxStatesState(this.buildItems, this.dropdownValue, this.onChangeValue);
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +28,20 @@ class _ComboBoxStatesState extends State<ComboBoxStates> {
           child: DropdownButton<String>(
             focusColor: Colors.green,
             value: dropdownValue,
-            icon: Icon(Icons.arrow_downward, color: Colors.white,),
+            icon: Icon(
+              Icons.arrow_downward,
+              color: Colors.black,
+            ),
             isExpanded: false,
             iconSize: 14,
             elevation: 56,
-
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
-             onChanged: (String newValue) {
-              setState(() {
-                dropdownValue = newValue;
-              });
+            style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+            onChanged: (String newValue) {
+              dropdownValue = newValue;
+              onChangeValue(dropdownValue);
             },
-            items: <String>['Escolha o estado:', 'Two', 'Free', 'Four','One1', 'Two2', 'Free3', 'Fou4r', 'O6ne', 'Two4', 'Fre5e', 'Fou6r']
-                .map<DropdownMenuItem<String>>((String value) {
+            items: buildItems.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),

@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 class FormatterDate {
 
   static DateTime strToDate(String str) {
-    return new DateFormat("yyyy-MM-ddThh:mm:ss.000Z").parse(str);
+    return new DateFormat("yyyy-MM-ddThh:mm:ss.SSSz").parse(str);
   }
 
   static String dateToStr(DateTime date) {

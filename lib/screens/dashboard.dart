@@ -1,8 +1,10 @@
 import 'package:covid19_brazil_status/components/center_msg.dart';
+import 'package:covid19_brazil_status/components/combo_box_states.dart';
 import 'package:covid19_brazil_status/components/progress.dart';
 import 'package:covid19_brazil_status/http/webclient.dart';
 import 'package:covid19_brazil_status/models/InfoCard.dart';
-import 'package:covid19_brazil_status/models/Statistics.dart';
+import 'package:covid19_brazil_status/models/states.dart';
+import 'package:covid19_brazil_status/models/statistics_by_states.dart';
 import 'package:covid19_brazil_status/util/formatter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +16,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-
   WebClient _webClient = WebClient();
+  String _state = 'SP';
 
   @override
   Widget build(BuildContext context) {
@@ -27,83 +29,105 @@ class _DashboardState extends State<Dashboard> {
               elevation: 1,
             ),
             body: Container(
-              child: FutureBuilder<Statistics>(
-                  future: _webClient.fetchAllStatistics(),
+              child: FutureBuilder<StatisticsStates>(
+                  future: _webClient.fetchAllStatistics(_state),
                   builder: (context, snapshot) {
                     switch (snapshot.connectionState) {
                       case ConnectionState.none:
-                        // TODO: Handle this case.
+                        Progress();
                         break;
                       case ConnectionState.waiting:
                         Progress();
                         break;
                       case ConnectionState.active:
-                        // TODO: Handle this case.
+                        Progress();
                         break;
                       case ConnectionState.done:
                         if (snapshot.hasData) {
-                          final Statistics statistics = snapshot.data;
+                          final StatisticsStates statistics = snapshot.data;
                           if (statistics != null) {
                             return ListView(
                               scrollDirection: Axis.vertical,
                               children: <Widget>[
-                                SizedBox(
-                                  height: 10,
-                                ),
                                 Container(
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage('images/covid.png'),
+                                          fit: BoxFit.cover)),
                                   child: Column(
                                     children: <Widget>[
-                                      Text(
-                                        'Coronavirus COVID-19 ',
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black),
+                                      SizedBox(
+                                        height: 220,
                                       ),
+                                    ],
+                                  ),
+                                ),
+                                Card(
+                                  elevation: 15,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
                                       Text(
-                                        'Informações relacionadas ao Brasil',
+                                        'Selecione um estado: ',
                                         style: TextStyle(
-                                            fontSize: 20, color: Colors.black),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18),
+                                      ),
+                                      ComboBoxStates(
+                                        buildItems: States.states,
+                                        dropdownValue: _state ?? 'SP',
+                                        onChangeValue: (st) {
+                                          _state = st;
+                                          setState(() {});
+                                        },
                                       ),
                                       IconButton(
                                         icon: Icon(Icons.help),
                                         tooltip: 'Ajuda',
                                         onPressed: () {
-                                          Scaffold.of(context).showSnackBar(SnackBar(content: Text('Dados coletados do Centro de Ciência e Engenharia de Sistemas (CSSE)')));
+                                          Scaffold.of(context).showSnackBar(
+                                              SnackBar(
+                                                  content: Text(
+                                                      'Dados coletados do Centro de Ciência e Engenharia de Sistemas (CSSE)')));
                                         },
                                       ),
                                     ],
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 60,
-                                ),
                                 Container(
+
                                   child: Column(
-                                    children: <Widget>[
+                                     children: <Widget>[
                                       StatusInfoCard(
-                                          InfoCard('Confirmados',
-                                              statistics.confirmed),
+
+                                          InfoCard(
+                                              'Confirmados', statistics.cases),
                                           Colors.orange,
                                           Colors.white),
                                       StatusInfoCard(
                                           InfoCard(
-                                              'Suspeitos', statistics.cases),
-                                          Colors.yellow,
+                                              'Suspeitos', statistics.suspects),
+                                          Colors.amber,
                                           Colors.white),
                                       StatusInfoCard(
-                                          InfoCard('Recuperados',
-                                              statistics.recovered),
+                                          InfoCard('Descartados',
+                                              statistics.refuses),
                                           Colors.green,
                                           Colors.white),
                                       StatusInfoCard(
                                           InfoCard('Mortes', statistics.deaths),
                                           Colors.red,
                                           Colors.white),
-                                      SizedBox(height: 20,),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
                                       Text(
-                                        'Última atualiazação: ' +
-                                            FormatterDate.apply(statistics.updatedAt),
+                                        'Última atualização: ' +
+                                            FormatterDate.apply(
+                                                statistics.datetime),
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontStyle: FontStyle.italic),
@@ -114,15 +138,18 @@ class _DashboardState extends State<Dashboard> {
                               ],
                             );
                           }
+
+                          break;
                         }
+
+                        return CenteredMessage(
+                          'Unknown error',
+                          icon: Icons.warning,
+                        );
 
                         break;
                     }
-
-                    return CenteredMessage(
-                      'Unknown error..',
-                      icon: Icons.warning,
-                    );
+                    return Center(child: Progress());
                   }),
             )));
   }
@@ -138,6 +165,7 @@ class StatusInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 300,
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(

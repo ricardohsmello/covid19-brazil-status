@@ -1,4 +1,6 @@
-class Statistics {
+//{"data":{"country":"Brazil","cases":11547,"confirmed":12240,"deaths":566,"recovered":127,"updated_at":"2020-04-07T12:23:24.000Z"}}
+
+class StatisticsCountry {
   String country;
   int cases;
   int confirmed;
@@ -6,7 +8,7 @@ class Statistics {
   int recovered;
   String updatedAt;
 
-  Statistics(
+  StatisticsCountry(
       {this.country,
       this.cases,
       this.confirmed,
@@ -14,8 +16,8 @@ class Statistics {
       this.recovered,
       this.updatedAt});
 
-  factory Statistics.fromJson(Map<String, dynamic> parsedJson) {
-    return Statistics(
+  factory StatisticsCountry.fromJson(Map<String, dynamic> parsedJson) {
+    return StatisticsCountry(
       country: parsedJson['data']['country'],
       cases: parsedJson['data']['cases'],
       confirmed: parsedJson['data']['confirmed'],
@@ -30,3 +32,5 @@ class Statistics {
     return 'Statistics{country: $country, cases: $cases, confirmed: $confirmed, deaths: $deaths, recovered: $recovered, updatedAt: $updatedAt}';
   }
 }
+
+

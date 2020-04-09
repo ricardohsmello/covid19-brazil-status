@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Progress extends StatelessWidget {
   final String title;
 
-  Progress({this.title = 'Loading'});
+  Progress({this.title = 'Carregando'});
 
   @override
   Widget build(BuildContext context) {
