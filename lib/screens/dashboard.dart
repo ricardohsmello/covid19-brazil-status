@@ -2,7 +2,7 @@ import 'package:covid19_brazil_status/components/center_msg.dart';
 import 'package:covid19_brazil_status/components/combo_box_states.dart';
 import 'package:covid19_brazil_status/components/progress.dart';
 import 'package:covid19_brazil_status/http/webclient.dart';
-import 'package:covid19_brazil_status/models/InfoCard.dart';
+import 'package:covid19_brazil_status/models/info_card.dart';
 import 'package:covid19_brazil_status/models/states.dart';
 import 'package:covid19_brazil_status/models/statistics_by_states.dart';
 import 'package:covid19_brazil_status/util/formatter.dart';
@@ -22,6 +22,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: AppBar(
               title: Text('COVID-19 Status Brasil'),
