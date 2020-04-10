@@ -2,7 +2,6 @@ class States {
 
 
   static const List<String> states = [
-    'Todos',
     'AC',
     'AL',
     'AM',
