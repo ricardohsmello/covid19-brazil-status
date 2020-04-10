@@ -17,6 +17,14 @@ Navigate until project-root (covid19-brazil-status) and run:
 ```
 - flutter packages get && flutter clean && flutter run
 ``` 
+
+To see the full status of Brazil:
+```
+- https://ricardohsmello.github.io/
+``` 
+<img width="250" alt="" src="https://i.imgur.com/GyMQIU8.png">
+
+
 ## Issues
 Feel free to submit issues and enhancement requests.
 
