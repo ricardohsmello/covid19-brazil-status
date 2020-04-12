@@ -8,15 +8,33 @@ void main() {
   testWidgets('should display the AppBar when Dashboard is opened',
       (WidgetTester tester) async {
     await tester.pumpWidget(Dashboard());
-     final first = find.byType(AppBar);
+    final first = find.byType(AppBar);
     expect(first, findsOneWidget);
   });
 
-  testWidgets('should display the select states when Dashboard is opened',
+  testWidgets('should display the TopContainer when Dashboard is opened',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(Dashboard());
+    final first = find.byType(MainContainer);
+
+    expect(first, findsOneWidget);
+  });
+
+  testWidgets('should display the CenterContainer when Dashboard is opened',
           (WidgetTester tester) async {
         await tester.pumpWidget(Dashboard());
-        final first = find.byType(type)
+        final first = find.byType(CenterContainer);
 
         expect(first, findsOneWidget);
       });
+
+  testWidgets('should display ComboBoxStates  when Dashboard is opened',
+          (WidgetTester tester) async {
+        await tester.pumpWidget(Dashboard());
+        final first = find.byType(ComboBoxStates);
+
+        expect(first, findsOneWidget);
+      });
+
+
 }
