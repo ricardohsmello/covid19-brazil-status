@@ -31,7 +31,7 @@ class WebClient {
     }
 
     Response response = await httpClientWithInterceptor
-        .get(baseURL + '/uf/' + _uf)
+        .get(baseURL + '/uf/' + (_uf ?? 'SP'))
         .timeout(Duration(seconds: 15));
 
     return StatisticsStates.fromJson(jsonDecode(response.body));
