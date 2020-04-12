@@ -50,19 +50,7 @@ class _DashboardState extends State<Dashboard> {
                             return ListView(
                               scrollDirection: Axis.vertical,
                               children: <Widget>[
-                                Container(
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage('images/covid.png'),
-                                          fit: BoxFit.cover)),
-                                  child: Column(
-                                    children: <Widget>[
-                                      SizedBox(
-                                        height: 220,
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                MyTopContainer(),
                                 Card(
                                   elevation: 15,
                                   shape: RoundedRectangleBorder(
@@ -99,11 +87,9 @@ class _DashboardState extends State<Dashboard> {
                                   ),
                                 ),
                                 Container(
-
                                   child: Column(
-                                     children: <Widget>[
+                                    children: <Widget>[
                                       StatusInfoCard(
-
                                           InfoCard(
                                               'Confirmados', statistics.cases),
                                           Colors.orange,
@@ -154,7 +140,27 @@ class _DashboardState extends State<Dashboard> {
                   }),
             )));
   }
+
 }
+
+class MyTopContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('images/covid.png'), fit: BoxFit.cover)),
+      child: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 220,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 
 class StatusInfoCard extends StatelessWidget {
   final InfoCard _infoCard;
