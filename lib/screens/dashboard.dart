@@ -17,7 +17,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   WebClient _webClient = WebClient();
-  String _state = 'SP';
+  String _state;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,8 @@ class _DashboardState extends State<Dashboard> {
                                             fontSize: 18),
                                       ),
                                       ComboBoxStates(
-                                        buildItems: States.states,
+                                        buildItems:
+                                            States.states.values.toList(),
                                         dropdownValue: _state ?? 'SP',
                                         onChangeValue: (st) {
                                           _state = st;
