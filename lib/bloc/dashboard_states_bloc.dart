@@ -1,6 +1,8 @@
 import 'dart:async';
 
-class DashboardStatesBloc {
+import 'package:bloc_pattern/bloc_pattern.dart';
+
+class DashboardStatesBloc extends BlocBase {
 
   final StreamController<String> _streamController = StreamController<String>.broadcast();
   Sink<String> get input => _streamController.sink;
@@ -8,4 +10,11 @@ class DashboardStatesBloc {
     return uf;
   });
 
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _streamController.close();
+  }
 }

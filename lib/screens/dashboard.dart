@@ -14,32 +14,36 @@ import 'package:flutter/material.dart';
 DashboardStatesBloc blocStates = DashboardStatesBloc();
 DashboardCardsBloc blocCards = DashboardCardsBloc();
 
+
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('COVID-19 Status Brasil'),
-      ),
-      body: ListView(children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('images/covid.png'),
-                  fit: BoxFit.cover)),
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 100,
-              ),
-            ],
-          ),
+        appBar: AppBar(
+          title: Text('COVID-19 Status Brasil'),
         ),
-        SelectStateWidget(),
-        InfoCardsWidget(),
-        SizedBox(height: 50,),
-      ],)
-    );
+        body: ListView(
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('images/covid.png'),
+                      fit: BoxFit.cover)),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 50,
+                  ),
+                ],
+              ),
+            ),
+            SelectStateWidget(),
+            InfoCardsWidget(),
+            SizedBox(
+              height: 50,
+            ),
+          ],
+        ));
   }
 }
 
@@ -112,6 +116,7 @@ class _InfoCardsWidgetState extends State<InfoCardsWidget> {
               icon: Icons.warning,
             );
           }
+
 
           if (snapshot.hasData) {
             switch (snapshot.connectionState) {
