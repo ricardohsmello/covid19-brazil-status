@@ -1,5 +1,5 @@
-import 'package:covid19_brazil_status/ui/widgets/country-widget.dart';
-import 'package:covid19_brazil_status/ui/widgets/state-widget.dart';
+import 'package:covid19_brazil_status/ui/widgets/country_widget.dart';
+import 'package:covid19_brazil_status/ui/widgets/state_widget.dart';
 import 'package:covid19_brazil_status/util/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

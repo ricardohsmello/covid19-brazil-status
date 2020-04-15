@@ -1,8 +1,8 @@
 import 'package:covid19_brazil_status/bloc/state_bloc.dart';
-import 'package:covid19_brazil_status/components/center_msg.dart';
-import 'package:covid19_brazil_status/components/combo_box_states.dart';
-import 'package:covid19_brazil_status/components/progress.dart';
-import 'package:covid19_brazil_status/components/status_info_card.dart';
+import 'package:covid19_brazil_status/ui/widgets/center_msg_widget.dart';
+import 'package:covid19_brazil_status/ui/widgets/cb_states_widget.dart';
+import 'package:covid19_brazil_status/ui/widgets/progress_widget.dart';
+import 'package:covid19_brazil_status/ui/widgets/status_info_widget.dart';
 import 'package:covid19_brazil_status/models/state_model.dart';
 import 'package:covid19_brazil_status/util/constants.dart';
 import 'package:covid19_brazil_status/util/formatter.dart';

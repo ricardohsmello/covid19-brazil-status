@@ -1,6 +1,6 @@
 import 'package:covid19_brazil_status/bloc/country_bloc.dart';
-import 'package:covid19_brazil_status/components/center_msg.dart';
-import 'package:covid19_brazil_status/components/progress.dart';
+import 'package:covid19_brazil_status/ui/widgets/center_msg_widget.dart';
+import 'package:covid19_brazil_status/ui/widgets/progress_widget.dart';
 import 'package:covid19_brazil_status/models/country_model.dart';
 import 'package:covid19_brazil_status/util/constants.dart';
 import 'package:flutter/material.dart';
