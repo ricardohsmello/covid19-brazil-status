@@ -1,6 +1,4 @@
-//{"data":{"country":"Brazil","cases":11547,"confirmed":12240,"deaths":566,"recovered":127,"updated_at":"2020-04-07T12:23:24.000Z"}}
-
-class StatisticsCountry {
+class CountryModel {
   String country;
   int cases;
   int confirmed;
@@ -8,7 +6,7 @@ class StatisticsCountry {
   int recovered;
   String updatedAt;
 
-  StatisticsCountry(
+  CountryModel(
       {this.country,
       this.cases,
       this.confirmed,
@@ -16,8 +14,8 @@ class StatisticsCountry {
       this.recovered,
       this.updatedAt});
 
-  factory StatisticsCountry.fromJson(Map<String, dynamic> parsedJson) {
-    return StatisticsCountry(
+  factory CountryModel.fromJson(Map<String, dynamic> parsedJson) {
+    return CountryModel(
       country: parsedJson['data']['country'],
       cases: parsedJson['data']['cases'],
       confirmed: parsedJson['data']['confirmed'],
@@ -31,6 +29,11 @@ class StatisticsCountry {
   String toString() {
     return 'Statistics{country: $country, cases: $cases, confirmed: $confirmed, deaths: $deaths, recovered: $recovered, updatedAt: $updatedAt}';
   }
+
+  List<CountryModel> results;
+  String error;
+
+  CountryModel.withError(String errorValue)
+      : results = List(),
+        error = errorValue;
 }
-
-

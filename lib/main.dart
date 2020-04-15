@@ -1,4 +1,4 @@
-import 'package:covid19_brazil_status/screens/dashboard.dart';
+import 'package:covid19_brazil_status/ui/pages/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Dashboard(),
+      home: DashboardScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

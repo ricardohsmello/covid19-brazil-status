@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class Progress extends StatelessWidget {
   final String title;
@@ -8,10 +7,21 @@ class Progress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[CircularProgressIndicator(backgroundColor: Colors.white,), Text(title, style: TextStyle(color: Colors.white),)],
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Padding(
+      padding: const EdgeInsets.all(18.0),
+      child: Column(
+        children: <Widget>[
+          CircularProgressIndicator(
+            backgroundColor: Colors.blueAccent,
+          ),
+          Text(
+            title,
+            style: TextStyle(color: Colors.black),
+          )
+        ],
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+      ),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:covid19_brazil_status/models/info_card.dart';
 import 'package:flutter/material.dart';
 
 class StatusInfoCard extends StatelessWidget {
@@ -47,5 +46,17 @@ class StatusInfoCard extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class InfoCard {
+  String title;
+  int total;
+
+  InfoCard(this.title, this.total);
+
+  @override
+  String toString() {
+    return super.toString();
   }
 }
