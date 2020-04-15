@@ -1,7 +1,7 @@
 # Covid-19 Brazil Status
 Check the numbers and status of the Covid-19 in brazil by states
 
-<img width="250" alt="" src="https://i.imgur.com/cy39TlN.png">
+<img width="250" alt="" src="https://i.imgur.com/PNRSVWN.png">
 
 ## Built With
 - Flutter
