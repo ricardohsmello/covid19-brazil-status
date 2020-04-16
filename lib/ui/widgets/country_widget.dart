@@ -1,4 +1,4 @@
-import 'package:covid19_brazil_status/bloc/country_bloc.dart';
+import 'package:covid19_brazil_status/bloc/covid19_brasil_bloc.dart';
 import 'package:covid19_brazil_status/ui/widgets/center_msg_widget.dart';
 import 'package:covid19_brazil_status/ui/widgets/progress_widget.dart';
 import 'package:covid19_brazil_status/models/country_model.dart';
@@ -14,13 +14,13 @@ class _CountryWidgetState extends State<CountryWidget> {
   @override
   void initState() {
     super.initState();
-    countryBloc.getCountry();
+    covid19BrasilBloc.getCountry();
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<CountryModel>(
-        stream: countryBloc.subject.stream,
+        stream: covid19BrasilBloc.countryData.stream,
         builder: (context, AsyncSnapshot<CountryModel> snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -58,6 +58,8 @@ class _CountryWidgetState extends State<CountryWidget> {
 
 Widget _buildCountryWidget(BuildContext context, CountryModel countryModel) {
   return Card(
+    margin: EdgeInsets.all(10),
+    elevation: 10,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10.0),
     ),
@@ -82,7 +84,9 @@ Widget _buildCountryWidget(BuildContext context, CountryModel countryModel) {
           ],
         ),
       ),
-      SizedBox(height: 20,),
+      SizedBox(
+        height: 20,
+      ),
       _RowInfo(
           title: Constants.confirmed,
           value: countryModel.confirmed,
