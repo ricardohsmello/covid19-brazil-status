@@ -22,7 +22,7 @@ To see the full status of Brazil:
 ```
 - https://ricardohsmello.github.io/
 ``` 
-<img width="250" alt="" src="https://i.imgur.com/GyMQIU8.png">
+<img width="250" alt="" src="https://i.imgur.com/0R3V0Y8.png">
 
 
 ## Issues
