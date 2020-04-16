@@ -26,7 +26,7 @@ class _CountryWidgetState extends State<CountryWidget> {
             case ConnectionState.none:
               break;
             case ConnectionState.waiting:
-              return Progress();
+              return Progress(title: Constants.msg_loading_countries);
               break;
             case ConnectionState.active:
               if (snapshot.hasData) {
@@ -49,7 +49,7 @@ class _CountryWidgetState extends State<CountryWidget> {
           }
 
           return CenteredMessage(
-            Constants.err_occurred,
+            Constants.err_occurred_country,
             icon: Icons.error,
           );
         });

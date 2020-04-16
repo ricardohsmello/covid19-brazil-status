@@ -33,59 +33,65 @@ class _SelectStateWidgetState extends State<SelectStateWidget> {
             case ConnectionState.none:
               break;
             case ConnectionState.waiting:
-              return Progress();
+              return Progress(title: Constants.msg_loading_states);
               break;
             case ConnectionState.active:
               if (snapshot.hasData) {
-                return Column(
-                  children: <Widget>[
-                    Card(
-                      elevation: 15,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                if (snapshot.data.suspects != null) {
+                  return Column(
+                    children: <Widget>[
+                      Card(
+                        elevation: 15,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              Constants.filter_by_state,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                            ComboBoxStates(
+                              buildItems: Constants.states.values.toList(),
+                              dropdownValue: _state ?? 'SP',
+                              onChangeValue: (st) {
+                                _state = st;
+                                stateBloc.getState(st);
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            Constants.filter_by_state,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          ComboBoxStates(
-                            buildItems: Constants.states.values.toList(),
-                            dropdownValue: _state ?? 'SP',
-                            onChangeValue: (st) {
-                              _state = st;
-                              stateBloc.getState(st);
-                            },
-                          ),
-                        ],
+                      StatusInfoCard(
+                          InfoCard(Constants.confirmed, snapshot.data.cases),
+                          Colors.orange,
+                          Colors.white),
+                      StatusInfoCard(
+                          InfoCard(Constants.suspects, snapshot.data.suspects),
+                          Colors.amber,
+                          Colors.white),
+                      StatusInfoCard(
+                          InfoCard(Constants.discard, snapshot.data.refuses),
+                          Colors.green,
+                          Colors.white),
+                      StatusInfoCard(
+                          InfoCard(Constants.deaths, snapshot.data.deaths),
+                          Colors.red,
+                          Colors.white),
+                      SizedBox(
+                        height: 20,
                       ),
-                    ),
-                    StatusInfoCard(InfoCard(Constants.confirmed, snapshot.data.cases),
-                        Colors.orange, Colors.white),
-                    StatusInfoCard(
-                        InfoCard(Constants.suspects, snapshot.data.suspects),
-                        Colors.amber,
-                        Colors.white),
-                    StatusInfoCard(
-                        InfoCard(Constants.discard, snapshot.data.refuses),
-                        Colors.green,
-                        Colors.white),
-                    StatusInfoCard(InfoCard(Constants.deaths, snapshot.data.deaths),
-                        Colors.red, Colors.white),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      Constants.last_update +
-                          FormatterDate.apply(snapshot.data.datetime),
-                      style: TextStyle(
-                          color: Colors.black, fontStyle: FontStyle.italic),
-                    )
-                  ],
-                );
+                      Text(
+                        Constants.last_update +
+                            FormatterDate.apply(snapshot.data.datetime),
+                        style: TextStyle(
+                            color: Colors.black, fontStyle: FontStyle.italic),
+                      )
+                    ],
+                  );
+                }
               }
               break;
             case ConnectionState.done:
@@ -94,8 +100,8 @@ class _SelectStateWidgetState extends State<SelectStateWidget> {
           }
 
           return CenteredMessage(
-            Constants.err_occurred,
-            icon: Icons.error,
+            Constants.err_occurred_states,
+            icon: Icons.warning,
           );
         });
   }

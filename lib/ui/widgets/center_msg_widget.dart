@@ -10,7 +10,7 @@ class CenteredMessage extends StatelessWidget {
       this.message, {
         this.icon,
         this.iconSize = 34,
-        this.fontSize = 18,
+        this.fontSize = 15,
       });
 
   @override

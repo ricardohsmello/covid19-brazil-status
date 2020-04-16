@@ -7,6 +7,9 @@ class Constants {
   static const String appName = 'COVID-19 Status Brasil';
   static const String last_update = 'Última atualização: ';
   static const String filter_by_state = 'Filtrar por estado: ';
+  static const String msg_loading_states = 'Carregando estados..';
+  static const String msg_loading_countries = 'Carregando dados do país..';
+
   static const String baseURL =
       "https://covid19-brazil-api.now.sh/api/report/v1/brazil";
 
@@ -14,7 +17,8 @@ class Constants {
   static const String msg_help =
       'Dados coletados do Centro de Ciência e Engenharia de Sistemas (CSSE)';
 
-  static const String err_occurred = 'Ocorreu um erro ao obter os dados da API';
+  static const String err_occurred_country = 'Ocorreu um erro ao obter os dados dos países';
+  static const String err_occurred_states = 'Ocorreu um erro ao obter os dados dos estados';
 
   static const Map<String, String> states = {
     'Acre': 'AC',
