@@ -3,6 +3,7 @@ import 'package:covid19_brazil_status/ui/widgets/center_msg_widget.dart';
 import 'package:covid19_brazil_status/ui/widgets/progress_widget.dart';
 import 'package:covid19_brazil_status/models/country_model.dart';
 import 'package:covid19_brazil_status/util/constants.dart';
+import 'package:covid19_brazil_status/util/formatter.dart';
 import 'package:flutter/material.dart';
 
 class CountryWidget extends StatefulWidget {
@@ -63,26 +64,23 @@ Widget _buildCountryWidget(BuildContext context, CountryModel countryModel) {
     ),
     child: Column(children: <Widget>[
       Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: <Widget>[
-            Text(
-              'Total geral no Brasil',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.left,
-            ),
-            IconButton(
-              icon: Icon(Icons.help),
-              tooltip: Constants.help,
-              onPressed: () {
-                Scaffold.of(context)
-                    .showSnackBar(SnackBar(content: Text(Constants.msg_help)));
-              },
-            ),
-          ],
+        padding: const EdgeInsets.all(18.0),
+        child: Text(
+          Constants.last_update +
+              FormatterDate.apply(countryModel.updatedAt),
+          style: TextStyle(
+              color: Colors.black, fontStyle: FontStyle.italic),
         ),
       ),
-      SizedBox(height: 20,),
+
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          Constants.msg_numbers,
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+         ),
+      ),
+      SizedBox(height: 10,),
       _RowInfo(
           title: Constants.confirmed,
           value: countryModel.confirmed,

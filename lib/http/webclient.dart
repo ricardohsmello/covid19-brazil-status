@@ -35,7 +35,7 @@ class WebClient {
 
   Future<Response> _getResponse(String url) async {
     Response response =
-        await httpClientWithInterceptor.get(url).timeout(Duration(seconds: 15));
+        await httpClientWithInterceptor.get(url).timeout(Duration(seconds: 35));
     return response;
   }
 

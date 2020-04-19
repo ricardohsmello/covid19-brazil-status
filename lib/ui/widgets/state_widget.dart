@@ -51,7 +51,7 @@ class _SelectStateWidgetState extends State<SelectStateWidget> {
                             Text(
                               Constants.filter_by_state,
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
+                                  fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             ComboBoxStates(
                               buildItems: Constants.states.values.toList(),
@@ -83,12 +83,7 @@ class _SelectStateWidgetState extends State<SelectStateWidget> {
                       SizedBox(
                         height: 20,
                       ),
-                      Text(
-                        Constants.last_update +
-                            FormatterDate.apply(snapshot.data.datetime),
-                        style: TextStyle(
-                            color: Colors.black, fontStyle: FontStyle.italic),
-                      )
+
                     ],
                   );
                 }
