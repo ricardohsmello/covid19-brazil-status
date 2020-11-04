@@ -1,4 +1,7 @@
-![Stars](https://img.shields.io/github/stars/ricardohsmello/covid19-brazil-status)
+![Issues](https://img.shields.io/github/issues/ricardohsmello/covid19-brazil-status) 
+![Forks](https://img.shields.io/github/forks/ricardohsmello/covid19-brazil-status) 
+![Stars](https://img.shields.io/github/stars/ricardohsmello/covid19-brazil-status) 
+![Release Version](https://img.shields.io/github/release/ricardohsmello/covid19-brazil-status)
 
 # Covid-19 Brazil Status
 Check the numbers and status of the Covid-19 in brazil by states
