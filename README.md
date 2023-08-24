@@ -10,7 +10,7 @@ Check the numbers and status of the Covid-19 in brazil by states
  
 ## Built With
 - Flutter
-- IntelliJ
+- IntelliJ 
 
 ## Running
 
