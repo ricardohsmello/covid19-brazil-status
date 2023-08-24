@@ -29,7 +29,6 @@ To see the full status of Brazil:
 ``` 
 <img width="250" alt="" src="https://i.imgur.com/VT03Q4g.png">
 
-
 ## Issues
 Feel free to submit issues and enhancement requests.
 
